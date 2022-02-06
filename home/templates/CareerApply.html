@@ -1,0 +1,46 @@
+{% extends 'home_base.html' %}
+{% block content4 %} 
+ <section id="contact" class="contact">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Apply for job</h2>{{careers.title}}
+      </div>
+
+      <div class="row mt-1 d-flex justify-content-end" data-aos="fade-right" data-aos-delay="100">
+         <div class="mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="100">
+
+          <form action="/home/career/apply/upload/{{careers.id}}" method="post" role="form" class="php-email-form">
+            {% csrf_token %}
+            {{ form }}
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="hidden" name="career" class="form-control" id="career" value="{{careers.id}}" required>
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control" name="mobile" id="subject" placeholder="Mobile Number" required>
+            </div>
+            <div class="form-group mt-3">
+                <input style="height: 35px;" type="file"  class="form-control" name="resume" id="resume" rows="5" placeholder="Resume" required>
+                <label for="resume">Please upload .pdf,.doc ,.docx files only</label>
+            </div>
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your Application has been sent. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Submit</button></div>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+{% endblock %}

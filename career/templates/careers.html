@@ -1,0 +1,73 @@
+<style>
+    .button {
+      border-radius: 4px;
+      background-color: #1c66a7;;
+      border: none;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 28px;
+      padding: 0px;
+      width: 99px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 5px;
+    }
+    
+    .button span {
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+    }
+    
+    .button span:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 0;
+      right: -20px;
+      transition: 0.5s;
+    }
+    
+    .button:hover span {
+      padding-right: 25px;
+    }
+    
+    .button:hover span:after {
+      opacity: 1;
+      right: 0;
+    }
+    </style>
+{% extends 'career_base.html' %}
+{% block content4 %} 
+<section id="career" class="team section-bg">
+    <div class="container" data-aos="fade-up">
+
+      <div class="section-title">
+        <h2>Careers</h2>
+        <p></p>
+      </div>
+
+      <div class="row"> 
+        {% for career in careers %}
+        <div class="col-lg-6 mt-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="member d-flex align-items-start">
+             
+            <div class="member-info">
+              <h4>{{career.title}}</h4> 
+              <!-- <h4>career.experience</h4>
+              <h4>career.details</h4> -->
+              <span></span>
+              <p>Minimum Experience: : {{career.experience}}</p> 
+              <a href="/home/career/apply/{{career.id}}"><button class="button"><span>Apply</span></button></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+
+    </div> 
+  </section><!-- End Team Section -->
+
+{% endblock %}
